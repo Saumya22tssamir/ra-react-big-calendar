@@ -6,14 +6,19 @@ $active-border: darken($btn-border, 12%);
 .rbc-toolbar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between; //modified space-between
   align-items: center;
+  width: 1318px; //add
+  height: 66px; //add
+  top: 48px;    //add
+  left: 48px;    //add
   margin-bottom: 10px;
   font-size: 16px;
 
   .rbc-toolbar-label {
     flex-grow:1;
-    padding: 0 10px;
+    border:0px,0px,1px,0px; //added
+    padding: 0px, 40px, 0px, 40px; //modified 0 10px
     text-align: center;
   }
 

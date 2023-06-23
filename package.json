@@ -1,10 +1,10 @@
 {
-  "name": "react-big-calendar",
-  "version": "1.8.1",
+  "name": "ra-react-big-calendar",
+  "version": "0.0.1",
   "description": "Calendar! with events",
   "author": {
-    "name": "Jason Quense",
-    "email": "monastic.panic@gmail.com"
+    "name": "Saumya Samir",
+    "email": "t-ssamir@microsoft.com"
   },
   "repository": {
     "type": "git",
