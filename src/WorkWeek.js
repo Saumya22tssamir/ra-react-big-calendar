@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types'
+/*import PropTypes from 'prop-types'
 import React from 'react'
 
 import Week from './Week'
@@ -17,7 +17,7 @@ class WorkWeek extends React.Component {
      * using our localizer. This is necessary until such time
      * as TimeGrid is converted to a functional component.
      */
-    let {
+/* let {
       date,
       localizer,
       min = localizer.startOf(new Date(), 'day'),
@@ -63,4 +63,4 @@ WorkWeek.title = (date, { localizer }) => {
   return localizer.format({ start, end: rest.pop() }, 'dayRangeHeaderFormat')
 }
 
-export default WorkWeek
+export default WorkWeek*/

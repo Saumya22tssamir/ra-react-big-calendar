@@ -6,6 +6,10 @@ import { notify } from './utils/helpers'
 import { dateCellSelection, getSlotAtX, pointInBox } from './utils/selection'
 import Selection, { getBoundsForNode, isEvent, isShowMore } from './Selection'
 
+function isWeekend(date) {
+  return date.getDay() === 0 || date.getDay() === 6 // Sunday has index 0, Saturday has index 6
+}
+
 class BackgroundCells extends React.Component {
   constructor(props, context) {
     super(props, context)
@@ -60,7 +64,8 @@ class BackgroundCells extends React.Component {
                   localizer.isSameDate(date, current) && 'rbc-today',
                   currentDate &&
                     localizer.neq(currentDate, date, 'month') &&
-                    'rbc-off-range-bg'
+                    'rbc-off-range-bg',
+                  isWeekend(date) && 'rbc-off-range-bg' // Add the condition for weekends
                 )}
               />
             </Wrapper>
@@ -69,6 +74,33 @@ class BackgroundCells extends React.Component {
       </div>
     )
   }
+
+  /* return (
+      <div className="rbc-row-bg" ref={this.containerRef}>
+        {range.map((date, index) => {
+          let selected = selecting && index >= startIdx && index <= endIdx
+          const { className, style } = getters.dayProp(date)
+
+          return (
+            <Wrapper key={index} value={date} range={range}>
+              <div
+                style={style}
+                className={clsx(
+                  'rbc-day-bg',
+                  className,
+                  selected && 'rbc-selected-cell',
+                  localizer.isSameDate(date, current) && 'rbc-today',
+                  currentDate &&
+                    localizer.neq(currentDate, date, 'month') &&
+                    'rbc-off-range-bg'
+                )}
+              />
+            </Wrapper>
+          )
+        })}
+      </div>
+    )
+  }*/
 
   _selectable() {
     let node = this.containerRef.current

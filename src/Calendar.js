@@ -414,7 +414,7 @@ class Calendar extends React.Component {
      * accepts either an array of builtin view names,
      *
      * ```jsx
-     * views={['month', 'day', 'agenda']}
+     * views={['month', 'day', '']}
      * ```
      * or an object hash of the view name and the component (or boolean for builtin).
      *
@@ -708,16 +708,16 @@ class Calendar extends React.Component {
       /**
        * Toolbar header format for the Agenda view, e.g. "4/1/2015 – 5/1/2015"
        */
-      agendaHeaderFormat: dateRangeFormat,
+      //agendaHeaderFormat: dateRangeFormat,
 
       /**
        * A time range format for selecting time slots, e.g "8:00am – 2:00pm"
        */
       selectRangeFormat: dateRangeFormat,
 
-      agendaDateFormat: dateFormat,
-      agendaTimeFormat: dateFormat,
-      agendaTimeRangeFormat: dateRangeFormat,
+      //agendaDateFormat: dateFormat,
+      //agendaTimeFormat: dateFormat,
+      //agendaTimeRangeFormat: dateRangeFormat,
 
       /**
        * Time range displayed on events.
@@ -786,11 +786,11 @@ class Calendar extends React.Component {
 
       toolbar: PropTypes.elementType,
 
-      agenda: PropTypes.shape({
+      /* agenda: PropTypes.shape({
         date: PropTypes.elementType,
         time: PropTypes.elementType,
         event: PropTypes.elementType,
-      }),
+      }),*/
 
       day: PropTypes.shape({
         header: PropTypes.elementType,
@@ -844,7 +844,7 @@ class Calendar extends React.Component {
       month: PropTypes.node,
       week: PropTypes.node,
       day: PropTypes.node,
-      agenda: PropTypes.node,
+      //agenda: PropTypes.node,
       date: PropTypes.node,
       time: PropTypes.node,
       event: PropTypes.node,
@@ -871,7 +871,7 @@ class Calendar extends React.Component {
     popup: false,
     toolbar: true,
     view: views.MONTH,
-    views: [views.MONTH, views.WEEK, views.DAY, views.AGENDA],
+    views: [views.MONTH /*, views.WEEK, views.DAY, views.AGENDA*/],
     step: 30,
     length: 30,
     allDayMaxRows: Infinity,
@@ -1078,7 +1078,7 @@ class Calendar extends React.Component {
    *
    * @param date
    * @param viewComponent
-   * @param {'month'|'week'|'work_week'|'day'|'agenda'} [view] - optional
+   * @param {'month' } [view] - optional
    * parameter. It appears when range change on view changing. It could be handy
    * when you need to have both: range and view type at once, i.e. for manage rbc
    * state via url
