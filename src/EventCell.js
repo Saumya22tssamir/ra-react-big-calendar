@@ -40,6 +40,12 @@ class EventCell extends React.Component {
     let userProps = getters.eventProp(event, start, end, selected)
 
     const content = (
+      <div>
+         <span style={{width: '4px', height: '26px', borderRadius: '4px 0px 0px 4px' , background: '#00B7C3',display:'flex' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+            <path d="M2048 384v1280H0V384h2048z" />
+          </svg>
+         </span>
       <div className="rbc-event-content" title={tooltip || undefined}>
         {Event ? (
           <Event
@@ -55,6 +61,7 @@ class EventCell extends React.Component {
         ) : (
           title
         )}
+      </div>
       </div>
     )
 

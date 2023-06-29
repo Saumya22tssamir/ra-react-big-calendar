@@ -376,7 +376,7 @@ MonthView.propTypes = {
   enableAutoScroll: PropTypes.bool,
   rtl: PropTypes.bool,
   resizable: PropTypes.bool,
-  width: PropTypes.number,
+  width: PropTypes.number, //
 
   accessors: PropTypes.object.isRequired,
   components: PropTypes.object.isRequired,

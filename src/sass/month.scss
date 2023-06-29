@@ -12,6 +12,7 @@
 
   .rbc-event-content {
     @extend .rbc-ellipsis;
+    
   }
 }
 
@@ -55,7 +56,7 @@
   height: 100%;
 
 .rbc-month-header {
-  display: -webkit-box;
+  display: -webkit-box;//
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -87,11 +88,16 @@
   }
 }
 
+.left-column {
+  width: 170px;
+  height: 626px;
+}
 .rbc-date-cell {
   flex: 1 1 0;
   min-width: 0;
   padding-right: 5px;
   text-align: right;
+  //border: 1px solid #ccc;
 
   &.rbc-now {
     font-weight: bold;
@@ -109,6 +115,7 @@
 
 .rbc-row-bg {
   @extend .rbc-abs-full;
+  border-top: 1px solid #ccc;
   display: flex;
   flex-direction: row;
   flex: 1 0 0;
@@ -119,6 +126,7 @@
 
 .rbc-day-bg {
   flex: 1 0 0%;
+  border-left: 1px solid #ccc;
 
   & + & {
     border-left: 1px solid $cell-border;
