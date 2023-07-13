@@ -1,6 +1,6 @@
 {
-  "name": "ra-react-big-calendar",
-  "version": "0.4.0",
+  "name": "@raux/ra-react-big-calendar",
+  "version": "0.6.3",
   "description": "Calendar! with events",
   "author": {
     "name": "Saumya Samir",
@@ -11,14 +11,13 @@
     "url": "git+https://github.com/jquense/react-big-calendar.git"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://microsoftit.pkgs.visualstudio.com/OneITVSO/_packaging/PS-GCM-ResourceAvailability/npm/registry/"
   },
   "license": "MIT",
   "main": "lib/index.js",
   "module": "dist/react-big-calendar.esm.js",
   "style": "lib/css/react-big-calendar.css",
-  "files": [
+  "files": [ 
     "lib/",
     "dist/",
     "LICENSE",
@@ -110,6 +109,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.20.7",
+    "@fluentui/react": "^8.110.7",
     "clsx": "^1.2.1",
     "date-arithmetic": "^4.1.0",
     "dayjs": "^1.11.7",

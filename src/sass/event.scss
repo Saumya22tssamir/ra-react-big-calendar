@@ -1,5 +1,10 @@
 @import './variables';
 
+.rbc-event-wrapper {
+  display: flex;
+  align-items: center;
+}
+
 .rbc-event {
   border: none;
   box-sizing: border-box;

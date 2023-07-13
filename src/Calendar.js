@@ -862,6 +862,7 @@ class Calendar extends React.Component {
      * or custom `Function(events, minimumStartDifference, slotMetrics, accessors)`
      */
     dayLayoutAlgorithm: DayLayoutAlgorithmPropType,
+    handleSelectedDate: PropTypes.func,
   }
 
   static defaultProps = {
@@ -1046,15 +1047,16 @@ class Calendar extends React.Component {
             onView={this.handleViewChange}
             onNavigate={this.handleNavigate}
             localizer={localizer}
+            handleSelectedDate= {this.props.handleSelectedDate}
           />
         )}
-        <div class="LeftRightColumn" style={{ display: 'flex' }}> 
-        <div className="left-column" style={{ width: '12.5%', height: '473px', border: '1px solid #ccc' }}>
-        <div className="left-column-header" style={{ width: '159.72px', height: '21.31px', borderBottom: '1px solid #d8d7d7' }}>
+        <div class="LeftRightColumn" style={{ display: 'flex',backgroundColor:'#fafafa' }}> 
+        <div className="left-column" style={{ width: '14.5%', height: '473px', border: '1px solid #ccc' }}>
+        <div className="left-column-header" style={{ width: '100%', height: '21.31px', borderBottom: '1px solid #d8d7d7' }}>
         </div>
         <div className="left-column-content" style={{ padding: '10px' }}>
           <span style={{fontFamily: 'Segoe UI', fontSize: '14px', fontWeight: 600, lineHeight: '20px', letterSpacing: '0px', textAlign: 'left'}}>Availability Forecast</span>
-          <span style={{width:'16px',height:'15.98px',fill:'#0F6CBD',marginLeft: '16px',display:'inline-flex'}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+          <span style={{width:'16px',height:'15.98px',fill:'#0F6CBD',marginLeft: '16px',display:'inline-flex',position:'relative',top:'7px'}}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
                   <path d="M896 896H768V768h128v128zm384 0h-128V768h128v128zm-512 128h128v128H768v-128zm-256 128H384v-128h128v128zm640-128h128v128h-128v-128zm-384 256h128v128H768v-128zm-256 128H384v-128h128v128zm-128 128h128v128H384v-128zm512 46l-21 22-15 60h-92v-128h128v46zm768-758q-23 15-42 33t-39 39h-47V768h128v56zm-512 456h47l-47 47v-47zm896-1152v708q-58-43-128-58V640H128v1152h700l-32 128H0V128h384V0h128v128h1024V0h128v128h384zm-128 128h-256v128h-128V256H512v128H384V256H128v256h1792V256zm-213 697q28-28 65-41t76-13q42 0 78 14t64 41 42 61 16 79q0 39-15 76t-43 65l-717 717-377 94 94-377 717-716zm192 192q21-21 21-51 0-32-20-50t-52-19q-13 0-26 4t-24 14l-692 692-34 135 135-34 692-691z" />
                 </svg>
           </span>

@@ -1,16 +1,63 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 import { navigate } from './utils/constants'
+import {
+  Calendar as FluentCalendar
+} from '@fluentui/react';
+import {
+  FocusTrapZone,
+  Callout,
+  DirectionalHint,
+  defaultCalendarStrings,
+  DefaultButton,
+} from '@fluentui/react';
+import { IconButton } from '@fluentui/react/lib/Button';
+import { useBoolean } from '@fluentui/react-hooks';
 
 class Toolbar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.buttonContainerRef = React.createRef();
+    this.state = {
+      selectedDate: new Date(),
+      showCalendar: false,
+
+    };
+    this.toggleShowCalendar = this.toggleShowCalendar.bind(this);
+    this.hideCalendar = this.hideCalendar.bind(this);
+    this.onSelectDate = this.onSelectDate.bind(this);
+  }
+  toggleShowCalendar() {
+    this.setState(prevState => ({
+      showCalendar: !prevState.showCalendar
+    }));
+  }
+
+  hideCalendar() {
+    this.setState({ showCalendar: false });
+  }
+  onSelectDate(date) {
+    this.setState({ selectedDate: date });
+    this.props.handleSelectedDate(date);
+    this.hideCalendar();
+  }
+
+  // onSelectDate(date)  {
+  //   setSelectedDate(date);
+  //   this.props.handleSelectedDate(date);
+  //   hideCalendar();
+  // }
+
+
   render() {
     let {
       localizer: { messages },
       label,
+
     } = this.props
 
     return (
-      <div className="rbc-toolbar">
+      <div className="rbc-toolbar" style={{ margin: "0px" }}>
         <span className="rbc-btn-group">
           <button
             type="button"
@@ -47,13 +94,68 @@ class Toolbar extends React.Component {
           </button>
         </span>
 
-        <span className="rbc-toolbar-label">
+        <span className="rbc-toolbar-label" onClick={null}>
           {label}
-          <span class="label-icon">
+          <div ref={this.buttonContainerRef}>
+            <IconButton className="drop" style={{
+              borderStyle: 'solid',
+              borderWidth: '0.10em 0.10em 0 0',
+              content: '',
+              display: 'inline-block',
+              height: '0.75em',
+              color:'black',
+              left: '1em',
+              position: 'relative',
+              top: '0.15em',
+              transform: 'rotate(135deg)',
+              verticalAlign: 'top',
+              width: '0.75em',
+              backgroundColor: '#fafafa',
+            }}
+              onClick={this.toggleShowCalendar.bind(this)}
+              iconProps={{
+                children: (
+                  //<span className='drop' >
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                    <path d="M1939 467l90 90-1005 1005L19 557l90-90 915 915 915-915z" />
+                  </svg>
+                  // </span>
+
+                ),
+              }}
+            />
+          </div>
+          {this.state.showCalendar && (
+            <Callout
+              isBeakVisible={false}
+              gapSpace={0}
+              doNotLayer={false}
+              target={this.buttonContainerRef.current}
+              directionalHint={DirectionalHint.bottomLeftEdge}
+              onDismiss={this.hideCalendar.bind(this)}
+              setInitialFocus
+            >
+              <FocusTrapZone isClickableOutsideFocusTrap>
+                <FluentCalendar
+                  onSelectDate={this.onSelectDate}
+                  onDismiss={this.hideCalendar}
+                  isMonthPickerVisible
+                  value={this.state.selectedDate}
+                  highlightCurrentMonth
+                  isDayPickerVisible
+                  showGoToToday
+                  // Calendar uses English strings by default. For localized apps, you must override this prop.
+                  strings={defaultCalendarStrings}
+                />
+              </FocusTrapZone>
+            </Callout>
+          )
+          }
+          {/* <span class="label-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
               <path d="M1939 467l90 90-1005 1005L19 557l90-90 915 915 915-915z" />
             </svg>
-          </span>
+</span>*/}
         </span>
 
         <span className="rbc-btn-group">
@@ -111,7 +213,8 @@ class Toolbar extends React.Component {
       return (
         <button
           type="button"
-          className="rbc-active"
+          className="rbc-active" style={{position: 'relative',
+            top: '-10px'}}
           onClick={this.view.bind(null, 'month')}
         >
           {messages.month}
